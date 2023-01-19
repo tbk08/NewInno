@@ -1,23 +1,33 @@
-import Services.TestService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import Services.NineLevelExamination;
+import Services.TenLevelExamination;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.Input;
-import dto.Question;
+import dto.FileReader;
+import dto.FileWriter;
+import dto.QuestionInput;
+import dto.TestResult;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException, JsonProcessingException {
-        Question[][] questions = Input.getTestData();
-        TestService testService = new TestService();
+    public static void main(String[] args) throws IOException {
+        // Массив получает данные из класса FileReader с помощью метода getTestData();
+        QuestionInput[][] questions = FileReader.getTestData();
+        QuestionInput[][] questions1 = FileReader.getQuestionNine();
+        // Создается объект класса TenLevelExamination для того чтобы проходить тест
+        TenLevelExamination testService = new TenLevelExamination();
+        NineLevelExamination nineLevelExamination = new NineLevelExamination();
+        // Создается объект класса ObjectMapper для того чтобы результат записывать в файлы output
         ObjectMapper objectMapper = new ObjectMapper();
-        String path = objectMapper.writeValueAsString(testService.examination(questions));
-        File file = new File("src/main/resources/output.json");
-        PrintWriter printWriter = new PrintWriter(file);
-        printWriter.println(path);
-        printWriter.close();
+        TestResult testResult=testService.examination(questions);
+        String jsonTestResult = objectMapper.writeValueAsString(testResult);
+
+//         Создается объект класса FileWriter для записи результатов в новый файл
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.writingFile(jsonTestResult, testResult.getStudentInfo());
+
+        //ToDo переделать логику задавать рандомный вопрос
+        //toDo два класса, 1 класс умеет читать файлы другой записывать
+        //toDo результаты сохранялись в новые файлы, в класссе записывающий файл должно вводится имея студентва
 
     }
 }

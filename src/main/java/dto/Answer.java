@@ -1,9 +1,14 @@
 package dto;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Answer {
+
     private final String text;
 
-    public Answer(String text) {
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    public Answer(@JsonProperty("text") String text) {
         this.text = text;
     }
 
@@ -15,6 +20,7 @@ public class Answer {
     public String toString() {
         return text;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Answer) {

@@ -1,41 +1,51 @@
 package dto;
 
-public class Results {
+public class Result {
     private String question;
     private int level;
     private Answer answer;
     private String checkResult;
 
+
     public String getQuestion() {
         return question;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
     }
 
     public int getLevel() {
         return level;
     }
 
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
     public Answer getAnswer() {
         return answer;
+    }
+
+    public void setAnswer(Answer answer) {
+        this.answer = answer;
     }
 
     public String getCheckResult() {
         return checkResult;
     }
 
-    public Results(String question, int level, Answer answer, String checkResult) {
+    public void setCheckResult(String checkResult) {
+        this.checkResult = checkResult;
+    }
+
+    public Result(String question, int level, Answer answer, String checkResult) {
         this.question = question;
         this.level = level;
         this.answer = answer;
         this.checkResult = checkResult;
     }
 
-    @Override
-    public String toString() {
-        return "Results{" +
-                "question='" + question + '\'' +
-                ", level=" + level +
-                ", answer=" + answer +
-                ", checkResult='" + checkResult + '\'' +
-                '}';
+    public Result() {
     }
 }
