@@ -3,11 +3,19 @@ package dto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 
-public class FileReader {
+import java.nio.file.Paths;
+
+public class TestReader {
+
+    //toDo научиться читать сложный формат в которм хранится тест
+    public void fileReading(String path) throws IOException {
+        File file = new File(path);
+        ObjectMapper mapper = new ObjectMapper();
+        Test test = mapper.readValue(Paths.get(path).toFile(), Test.class);
+        System.out.println(test.toString());
+    }
     public static QuestionInput[][] getTestData() throws JsonProcessingException, FileNotFoundException {
         Answer[] answerQuestion1 = new Answer[4];
         answerQuestion1[0] = new Answer("Answer1|1");

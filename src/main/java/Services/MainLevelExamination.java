@@ -13,7 +13,6 @@ public abstract class MainLevelExamination {
         System.out.println(questions[iForLevel][iForQuestion].getText());
         System.out.println("Enter one of answers as given \n" + Arrays.toString(questions[iForLevel][iForQuestion].getAnswer()));
     }
-
     public static String getInfoStudent() {
         Scanner in = new Scanner(System.in);
         System.out.println("Entre your full name:");
