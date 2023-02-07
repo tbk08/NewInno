@@ -4,7 +4,7 @@ public class Result {
     private String question;
     private int level;
     private Answer answer;
-    private String checkResult;
+    private boolean checkResult;
 
 
     public String getQuestion() {
@@ -31,15 +31,15 @@ public class Result {
         this.answer = answer;
     }
 
-    public String getCheckResult() {
+    public boolean getCheckResult() {
         return checkResult;
     }
 
-    public void setCheckResult(String checkResult) {
+    public void setCheckResult(boolean checkResult) {
         this.checkResult = checkResult;
     }
 
-    public Result(String question, int level, Answer answer, String checkResult) {
+    public Result(String question, int level, Answer answer, boolean checkResult) {
         this.question = question;
         this.level = level;
         this.answer = answer;

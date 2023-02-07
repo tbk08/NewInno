@@ -1,9 +1,10 @@
 package Services;
 
-import dto.QuestionInput;
-import dto.Result;
+import dto.Test;
 import dto.TestResult;
 
+import java.util.Scanner;
+
 public interface Examination {
-    TestResult examination(QuestionInput[][] questions);
+    TestResult examination(Test[][] questions, Scanner scanner);
 }
